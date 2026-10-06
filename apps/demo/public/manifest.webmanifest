@@ -1,0 +1,9 @@
+{
+  "name": "Sombrerería · POS",
+  "short_name": "POS Sombreros",
+  "start_url": "/pos",
+  "display": "standalone",
+  "background_color": "#f7f4ef",
+  "theme_color": "#5b3a29",
+  "icons": [{ "src": "/icono.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

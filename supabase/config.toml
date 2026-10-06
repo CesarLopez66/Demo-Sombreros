@@ -1,0 +1,66 @@
+# Configuración del entorno local de Supabase CLI (supabase start / db reset).
+# En el proyecto en la nube, replicar los ajustes de [auth] desde el Dashboard.
+
+project_id = "sombreros-erp"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]   # el esquema `app` NO se expone
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+# Pooler en modo transacción (equivalente local al puerto 6543 de producción)
+[db.pooler]
+enabled = true
+port = 54329
+pool_mode = "transaction"
+default_pool_size = 20
+max_client_conn = 200
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql", "./seed_usuarios_demo.sql"]
+
+[realtime]
+enabled = true
+
+[studio]
+enabled = true
+port = 54323
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000", "http://localhost:3001"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+# Alta de usuarios solo por el SuperAdmin (Admin API); sin registro público.
+enable_signup = false
+enable_anonymous_sign_ins = false
+minimum_password_length = 10
+password_requirements = "lower_upper_letters_digits_symbols"
+
+[auth.email]
+enable_signup = false
+double_confirm_changes = true
+enable_confirmations = false
+
+# MFA TOTP: obligatorio para SuperAdmin y Gerente (la BD exige aal2 vía RLS y
+# el middleware del ERP redirige a /mfa si la sesión es aal1).
+[auth.mfa]
+max_enrolled_factors = 10
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true

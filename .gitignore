@@ -1,0 +1,25 @@
+node_modules/
+.next/
+dist/
+out/
+coverage/
+.turbo/
+.vercel/
+
+.env
+.env.*
+!.env.example
+
+# Certificados de firma digital: NUNCA en el repositorio
+*.p12
+*.pfx
+*.pem
+*.key
+
+supabase/.branches/
+supabase/.temp/
+
+.DS_Store
+Thumbs.db
+*.log
+*.tsbuildinfo

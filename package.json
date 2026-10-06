@@ -1,0 +1,26 @@
+{
+  "name": "sombreros-erp",
+  "private": true,
+  "version": "0.1.0",
+  "description": "ERP & POS multisucursal — Sombrerería Bolivia",
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "demo": "npm run dev -w @sombreros/demo",
+    "demo:build": "npm run build -w @sombreros/demo",
+    "demo:prod": "npm run build -w @sombreros/demo && npm run start -w @sombreros/demo",
+    "db:test": "node scripts/db-test/run.mjs",
+    "db:reset": "supabase db reset",
+    "db:push": "supabase db push",
+    "db:types": "supabase gen types typescript --local > packages/shared/src/database.types.ts"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.3.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
