@@ -31,6 +31,8 @@ npm run demo:prod   # build + start con .env.production
 
 Todo corre en el navegador (estado en `localStorage`, sincronizado entre pestañas). PIN de cajero `1234`, PIN de gerente `9999`. El POS tiene un botón **Simular corte de red** para emitir en contingencia, y el ERP un selector de rol que imita lo que el RLS deja ver.
 
+**GitHub Pages:** cada push a `main` compila la demo como sitio estático (`.github/workflows/pages.yml`, con `EXPORT_ESTATICO=1` y `NEXT_PUBLIC_BASE_PATH=/<repo>`) y la publica en `https://<usuario>.github.io/<repo>/`. En *Settings → Pages* la fuente debe ser **GitHub Actions**.
+
 ## Entornos
 
 | | dev (local) | prod (nube) |

@@ -1,16 +1,25 @@
 'use client';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import QRCode from 'qrcode';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { InsigniaFactura } from '@/components/Insignias';
 import { fmtBs } from '@/lib/formato';
 import { useEstado } from '@/lib/store';
 
 const NIT_EMISOR = '1020304025'; // demo
 
-export default function Ticket() {
-  const { id } = useParams<{ id: string }>();
+// useSearchParams exige un límite de Suspense en el export estático.
+export default function PaginaTicket() {
+  return (
+    <Suspense>
+      <Ticket />
+    </Suspense>
+  );
+}
+
+function Ticket() {
+  const id = useSearchParams().get('id');
   const e = useEstado();
   const v = e.ventas.find((x) => x.id === id);
   const [qr, setQr] = useState('');

@@ -88,7 +88,7 @@ export default function Terminal() {
       cliente: { tipoDocumento: tipoDoc, documento: documento.trim(), razonSocial: razon.trim().toUpperCase() },
       pagos: [{ metodo, monto: total, recibido: metodo === 'efectivo' ? Number(recibido) : undefined }],
     });
-    router.push(`/pos/ticket/${id}`);
+    router.push(`/pos/ticket?id=${id}`);
   };
 
   const alEnter = (ev: React.KeyboardEvent<HTMLInputElement>) => {

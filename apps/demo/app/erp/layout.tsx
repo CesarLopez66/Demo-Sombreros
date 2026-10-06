@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { InsigniaEntorno } from '@/components/Insignias';
+import { recurso } from '@/lib/entorno';
 import { ETIQUETA_ROL } from '@/lib/formato';
 import { permisos } from '@/lib/permisos';
 import { reiniciarDemo, setPerfilErp, useEstado } from '@/lib/store';
@@ -28,7 +29,7 @@ export default function ErpLayout({ children }: { children: React.ReactNode }) {
     <div className="erp">
       <aside className="erp-lateral">
         <Link href="/" className="erp-marca">
-          <img src="/icono.svg" width={30} height={30} alt="" />
+          <img src={recurso('/icono.svg')} width={30} height={30} alt="" />
           <span><strong>Sombrerería</strong><br /><span style={{ fontSize: 12, color: '#a89c8c' }}>ERP</span></span>
         </Link>
         <nav className="erp-nav" aria-label="Módulos">

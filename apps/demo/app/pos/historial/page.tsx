@@ -70,7 +70,7 @@ export default function Historial() {
                     <td><InsigniaFactura estado={v.factura.estado} /></td>
                     <td>{v.sync === 'pendiente' ? <span className="badge badge-aviso">⟳ Pendiente</span> : <span className="badge badge-bien">✓</span>}</td>
                     <td className="fila" style={{ flexWrap: 'nowrap', gap: 6 }}>
-                      <Link className="btn btn-chico" href={`/pos/ticket/${v.id}`}>Ticket</Link>
+                      <Link className="btn btn-chico" href={`/pos/ticket?id=${v.id}`}>Ticket</Link>
                       {v.estado === 'completada' && <button className="btn btn-chico btn-peligro" onClick={() => setAnulando(v.id)}>Anular</button>}
                     </td>
                   </tr>

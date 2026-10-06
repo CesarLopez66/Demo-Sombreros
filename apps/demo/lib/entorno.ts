@@ -6,3 +6,8 @@ export type Entorno = 'dev' | 'prod';
 export const ENTORNO: Entorno = process.env.NEXT_PUBLIC_APP_ENV === 'prod' ? 'prod' : 'dev';
 export const FUENTE_DATOS = process.env.NEXT_PUBLIC_DATA_SOURCE ?? 'mock';
 export const DATOS_SIMULADOS = FUENTE_DATOS === 'mock';
+
+// Prefijo de la ruta base (GitHub Pages publica bajo /<repo>). Next lo añade
+// solo en <Link> y router; los <img> y metadatos lo necesitan a mano.
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+export const recurso = (ruta: string) => `${BASE_PATH}${ruta}`;

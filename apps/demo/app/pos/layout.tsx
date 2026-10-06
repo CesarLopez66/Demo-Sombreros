@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { InsigniaEntorno } from '@/components/Insignias';
+import { recurso } from '@/lib/entorno';
 import { TecladoPin } from '@/components/TecladoPin';
 import { setOnline, useEstado } from '@/lib/store';
 
@@ -52,7 +53,7 @@ export default function PosLayout({ children }: { children: React.ReactNode }) {
       <header className="pos-barra">
         <div className="fila" style={{ gap: 14 }}>
           <Link href="/" className="fila" style={{ gap: 8 }}>
-            <img src="/icono.svg" width={28} height={28} alt="" />
+            <img src={recurso('/icono.svg')} width={28} height={28} alt="" />
             <strong>POS</strong>
           </Link>
           {e.sesion && (

@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { InsigniaEntorno } from '@/components/Insignias';
+import { recurso } from '@/lib/entorno';
 import { reiniciarDemo } from '@/lib/store';
 
 export default function Inicio() {
@@ -8,7 +9,7 @@ export default function Inicio() {
     <main style={{ maxWidth: 980, margin: '0 auto', padding: '48px 20px', display: 'grid', gap: 28 }}>
       <div className="fila entre">
         <div className="fila" style={{ gap: 12 }}>
-          <img src="/icono.svg" width={44} height={44} alt="" />
+          <img src={recurso('/icono.svg')} width={44} height={44} alt="" />
           <div>
             <h1>Sombrerería · ERP &amp; POS multisucursal</h1>
             <p className="muted">La Paz · Cochabamba · Santa Cruz · Taller central</p>
